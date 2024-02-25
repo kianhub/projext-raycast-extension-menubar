@@ -71,6 +71,16 @@ export default function Command() {
     },
   });
 
+  // update timestring
+  const session: Session = {
+    _id: cachedSessionState._id,
+    focusName: cachedSessionState.focusName,
+    startedAt: cachedSessionState.startedAt,
+    timeString: getTimeString(new Date(cachedSessionState.startedAt)),
+  };
+
+  setCachedSessionState(session);
+
   return (
     <MenuBarExtra
       title={cachedSessionState.timeString}
