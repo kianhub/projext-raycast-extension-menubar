@@ -72,6 +72,7 @@ export default function Command() {
   });
 
   // update timestring
+  if (cachedSessionState._id !== "") {
   const session: Session = {
     _id: cachedSessionState._id,
     focusName: cachedSessionState.focusName,
@@ -80,6 +81,7 @@ export default function Command() {
   };
 
   setCachedSessionState(session);
+}
 
   return (
     <MenuBarExtra
