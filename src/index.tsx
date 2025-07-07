@@ -38,6 +38,9 @@ export default function Command() {
   });
 
   const { isLoading } = useFetch(`https://projext-tau.vercel.app/api/focus/session/${preferences.apiKey}`, {
+    headers: {
+      'User-Agent': 'RaycastExtensionMenuBar/1.0'
+    },
     onData: (data: DataSession) => {
       if (data._id !== null) {
         console.log(cachedSessionState);
@@ -58,7 +61,8 @@ export default function Command() {
         }
       }
     },
-    onError: async () => {
+    onError: async (error) => {
+     console.log(error) 
       // no active session, clear the cache
       const session: Session = {
         _id: "",
